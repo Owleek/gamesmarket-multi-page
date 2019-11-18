@@ -1,9 +1,114 @@
 @import "default";
 
+.overlay {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  color: #ffffff;
+  text-align: center;
+  position: fixed;
+  left: 0; top: 0;
+  background-color: rgba(0,0,0,.9);
+  z-index: 1000;
+
+  @media only screen and(max-width: 1199px) {
+      display: none !important;
+  }
+  
+  &__inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+  }
+  
+  &__contain {
+      max-width: 965px;
+      position: relative;
+  
+      &:after {
+          content: "";
+          position: absolute;
+          background: url(../img/curved_arrow.png) center center no-repeat;
+          width: 240px;
+          height: 240px;
+          z-index: -1;
+      }
+
+
+      @media only screen and(max-width: 1500px) {
+          max-width: 800px;
+      }
+    
+      @media only screen and(max-width: 1400px) {
+          max-width: 600px;
+      }
+  }
+
+  &__title {
+      font-size: 36px;
+      line-height: 44px; 
+      margin-bottom: 15px;
+  }
+
+  &__caption {
+      font-size: 28px;
+      line-height: 36px;
+      font-weight: 400;
+      color: #777777;
+  }
+
+  &_arrow-bl {
+      .overlay__contain {
+          &:after {
+              bottom: -195px;
+              left: -240px;
+          }
+      }
+  }
+
+  &_arrow-tr {
+      .overlay__contain {
+          &:after {
+              transform: rotate(180deg) translate(-100%, 100%);
+              top: 30px;
+              right: -15px;
+          }
+      }
+  }
+
+  &_arrow-b {
+      .overlay__contain {
+          &:after {   
+              background: url(../img/curved_arrow_straight.png) center center no-repeat;
+              bottom: 0;
+              left: 50%;
+              transform: translate(-50%, 100%);
+          }
+
+          @media only screen and(max-width: 1500px) {
+              max-width: 965px;
+          }
+        
+          @media only screen and(max-width: 1400px) {
+              max-width: 965px;
+          }
+
+      }
+      padding-bottom: 200px;
+  }
+}
+
 .download-pane {
+  display: none;
+  width: 1170px;
+  position: fixed;
+  top: 0; left: 50%;
   background-color: transparent;
-  position: sticky;
-  top: 0;
+  background-color: transparent;
+  transform: translateX(-50%);
   z-index: 999;
 
   .inner {
@@ -31,15 +136,11 @@
       width: 98.7%;
       bottom: -2px;
     }
-
-
   }
 
   .app-logo {
     width: 93px;
     height: 93px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
   }
 
   .title {
@@ -85,6 +186,7 @@
           left: -10px; top: 50%;
           transform: translate(-100%, -50%);
           background: url("../img/art_work_1.png") 50% 50% no-repeat;
+          background-size: contain;
         }
       }
 
@@ -261,8 +363,6 @@
         width: 220px;
         height: 220px;
         margin-top: 20px;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
       }
 
       .rating-box {}
@@ -272,7 +372,9 @@
         background-color: #d9e4f5;
       }
 
-      .star {}
+      .star {
+
+      }
 
       .grade-box {
         padding: 10px 30px 40px 30px;
@@ -321,6 +423,7 @@
       width: 228px;
       height: 78px;
       background: url("../img/art_work_2.png") no-repeat 50% 50%;
+      background-size: contain;
       transform: translateY(-50%);
     }
   }
@@ -426,7 +529,8 @@
         height: 9px;
         left: 0; top: 50%;
         transform: translateY(-50%);
-        background: url("../img/art_work_4_xs.png") 50% 50% no-repeat;
+        background: url("../img/art_work_4.png") 50% 50% no-repeat;
+        background-size: contain;
       }
     }
 
@@ -583,19 +687,17 @@
 
     }
 
-    .pic {
+    .app-logo {
       width: 100%;
       height:170px;
       margin-bottom: 10px;
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
     }
 
     .title {
       text-align: center;
     }
 
-    .pic,
+    .app-logo,
     .title {
       display: block;
     }
