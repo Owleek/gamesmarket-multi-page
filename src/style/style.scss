@@ -434,6 +434,8 @@
       padding: 8px 12px;
       display: block;
       position: relative;
+      background: transparent;
+      z-index: 1;
       flex-grow: 1;
       
       &:before {
